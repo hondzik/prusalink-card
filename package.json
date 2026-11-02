@@ -1,0 +1,70 @@
+{
+  "author": {
+    "name": "Jan Kropáč",
+    "email": "honza@kropac.net"
+  },
+  "license": "GPL-3.0-only",
+  "name": "prusalink-card",
+  "displayName": "PrusaLink Card",
+  "description": "Home Assistant Lovelace card for 3D printers exposed by the PrusaLink integration",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hondzik/prusalink-card"
+  },
+  "keywords": [
+    "home-assistant",
+    "lovelace",
+    "custom-card",
+    "prusalink",
+    "prusa",
+    "3d-printer"
+  ],
+  "type": "module",
+  "version": "0.0.0",
+  "module": "./dist/prusalink-card.js",
+  "scripts": {
+    "watch": "rollup -c conf/rollup.config.js -w",
+    "build": "node scripts/optimize-icons.mjs && rollup -c conf/rollup.config.js",
+    "lint & format": "eslint --config conf/eslint.config.js src README.md --ext .ts,.js --fix && prettier --config conf/.prettierrc.json --ignore-path conf/.prettierignore --write src/**/*.{ts,js,css,scss,html} && markdownlint-cli2 --config conf/.markdownlint-cli2.jsonc --fix",
+    "lint:check": "eslint --config conf/eslint.config.js src README.md --ext .ts,.js && prettier --config conf/.prettierrc.json --ignore-path conf/.prettierignore --check src/**/*.{ts,js,css,scss,html} && markdownlint-cli2 --config conf/.markdownlint-cli2.jsonc",
+    "optimize-icons": "node scripts/optimize-icons.mjs",
+    "test": "vitest run --coverage --config conf/vitest.config.ts --root .",
+    "test:watch": "vitest --config conf/vitest.config.ts --root .",
+    "version": "npm run build && git add dist",
+    "version MAJOR": "npm version major",
+    "version MINOR": "npm version minor",
+    "version PATCH": "npm version patch",
+    "version CUSTOM": "node scripts/version-custom.js"
+  },
+  "devDependencies": {
+    "@eslint/markdown": "^8.0.3",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.2",
+    "@rollup/plugin-typescript": "^12.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.72.0",
+    "@typescript-eslint/parser": "^8.72.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-prettier": "^5.5.7",
+    "markdownlint-cli2": "^0.24.0",
+    "prettier": "^3.9.10",
+    "rollup": "^4.65.0",
+    "rollup-plugin-summary": "^3.0.1",
+    "svg-path-commander": "^2.3.3",
+    "svgo": "^4.1.0",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "home-assistant-js-websocket": "^9.7.1",
+    "lit": "^3.3.3"
+  },
+  "overrides": {
+    "katex": "^0.19.0"
+  }
+}

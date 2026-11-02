@@ -1,0 +1,7 @@
+{
+  "name": "PrusaLink Card for Home Assistant",
+  "render_readme": true,
+  "filename": "prusalink-card.js",
+  "content_in_root": false,
+  "homeassistant": "2025.10.0"
+}
