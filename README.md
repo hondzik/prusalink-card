@@ -5,24 +5,26 @@
 [![Project Maintenance](https://img.shields.io/badge/maintainer-hondzik-blue.svg?style=for-the-badge)](https://github.com/hondzik)
 [![GitHub Activity](https://img.shields.io/github/last-commit/hondzik/prusalink-card?style=for-the-badge)](https://github.com/hondzik/prusalink-card/commits/main)
 
+A Lovelace card that shows a 3D printer exposed by the [PrusaLink integration](https://www.home-assistant.io/integrations/prusalink/): the print preview, status, controls, progress, temperatures and the loaded filament in the space of a single Tile card. Optionally a Tile-like block for the remotely switched socket that powers the printer is added above it. The printer block is two grid rows high, the socket block adds one more.
+
+![The card in dark mode](docs/images/dark.png) 
+![The card in light mode](docs/images/light.png)
+
 ## Table of contents <!-- omit from toc -->
 
-- [Description](#description)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Adding the card](#adding-the-card)
 - [How it works](#how-it-works)
   - [Socket block](#socket-block)
   - [Printer block](#printer-block)
+  - [Picture of the printer instead of the socket icon](#picture-of-the-printer-instead-of-the-socket-icon)
+  - [Switching the socket off safely](#switching-the-socket-off-safely)
 - [Configuration options](#configuration-options)
 - [Troubleshooting](#troubleshooting)
 - [Translations](#translations)
 - [License](#license)
   - [Icons](#icons)
-
-## Description
-
-A Lovelace card that shows a 3D printer exposed by the [PrusaLink integration](https://www.home-assistant.io/integrations/prusalink/): the print preview, status, controls, progress, temperatures and the loaded filament in the space of a single Tile card. Optionally a Tile-like block for the remotely switched socket that powers the printer is added above it. The printer block is two grid rows high, the socket block adds one more.
 
 ## Requirements
 
