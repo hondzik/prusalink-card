@@ -7,7 +7,7 @@
 
 A Lovelace card that shows a 3D printer exposed by the [PrusaLink integration](https://www.home-assistant.io/integrations/prusalink/): the print preview, status, controls, progress, temperatures and the loaded filament in the space of a single Tile card. Optionally a Tile-like block for the remotely switched socket that powers the printer is added above it. The printer block is two grid rows high, the socket block adds one more.
 
-![The card in dark mode](docs/images/dark.png) 
+![The card in dark mode](docs/images/dark.png)
 ![The card in light mode](docs/images/light.png)
 
 ## Table of contents <!-- omit from toc -->
