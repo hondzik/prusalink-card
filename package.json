@@ -20,7 +20,7 @@
     "3d-printer"
   ],
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "module": "./dist/prusalink-card.js",
   "scripts": {
     "watch": "rollup -c conf/rollup.config.js -w",
