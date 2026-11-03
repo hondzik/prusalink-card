@@ -113,7 +113,7 @@ The editor and the card are translated into cs, de, en, es, fr, he, hu, it, ja, 
 
 Copyright (C) 2026 hondzik. This project is licensed under the [GNU General Public License v3.0](LICENSE) (`GPL-3.0-only`).
 
-The card bundles icons from a GPL-3.0 project (see below), and the build inlines them into `dist/prusalink-card.js`, so the distributed bundle as a whole has to be GPL-3.0 as well. That is why the whole project is GPL-3.0 rather than a more permissive license. The GPL-3.0 is compatible with the MIT-licensed code this project was started from.
+The card bundles icons from a GPL-3.0 project (see below), and the build inlines them into `dist/prusalink-card.js`, so the distributed bundle as a whole has to be GPL-3.0 as well. That is why the whole project is GPL-3.0 rather than a more permissive license.
 
 ### Icons
 

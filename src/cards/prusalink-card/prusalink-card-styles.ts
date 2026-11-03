@@ -306,4 +306,14 @@ export const PrusaLinkCardStyles = css`
     margin: 0 auto;
     border-radius: 8px;
   }
+
+  /* caption under the picture: small, wraps (a long name must never widen the dialog) */
+  .preview-file {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--secondary-text-color);
+    overflow-wrap: anywhere;
+  }
 `;

@@ -50,6 +50,10 @@ export class PrusaLinkCard extends LitElement {
   @state()
   private _previewFailed?: string;
 
+  // natural width of the preview picture, so that its popup is not wider than the picture
+  @state()
+  private _previewWidth?: number;
+
   // URL of the socket picture (the media-source id of the config, resolved to a signed URL)
   @state()
   private _imageUrl?: string;
@@ -314,7 +318,12 @@ export class PrusaLinkCard extends LitElement {
         <div class="preview ${picture ? 'clickable' : ''}" @click=${() => picture && (this._previewOpen = true)} title=${picture ? localize('card.preview') : nothing}>
           ${
             picture
-              ? html`<img src=${picture} alt=${localize('card.preview')} @error=${() => (this._previewFailed = picture)} />`
+              ? html`<img
+                  src=${picture}
+                  alt=${localize('card.preview')}
+                  @load=${(e: Event) => (this._previewWidth = (e.target as HTMLImageElement).naturalWidth || undefined)}
+                  @error=${() => (this._previewFailed = picture)}
+                />`
               : html`<ha-icon class="placeholder" icon="mdi:image-off-outline"></ha-icon>`
           }
         </div>
@@ -384,15 +393,24 @@ export class PrusaLinkCard extends LitElement {
   private _renderPreview(entities: PrinterEntities, localize: (key: string) => string): TemplateResult {
     const picture = this._previewPicture(entities);
     const filename = this._stateOf(entities.filename);
+    // the file name is a caption under the picture (a long one in the title would widen the dialog)
+    const showFile = isValidState(filename) && isJobActive(this._stateOf(entities.state)?.state);
+    // The dialog is as wide as the picture (plus the dialog's padding) but never wider than the screen, so on a phone
+    // the picture (max-width: 100%) shrinks with it: `--width` of the Web Awesome dialog does it, the nearest width
+    // preset is the fallback.
+    const pictureWidth = this._previewWidth;
+    const preset = !pictureWidth ? 'medium' : pictureWidth <= 270 ? 'small' : pictureWidth <= 530 ? 'medium' : 'large';
     // ha-dialog of Home Assistant 2026.10 (Web Awesome): the title is the header-title attribute
     return html`
       <ha-dialog
         open
-        width="large"
-        header-title=${isValidState(filename) && isJobActive(this._stateOf(entities.state)?.state) ? filename.state : localize('card.preview')}
+        width=${preset}
+        style=${pictureWidth ? `--width: min(calc(${pictureWidth}px + 3rem), calc(100vw - 2rem))` : nothing}
+        header-title=${localize('card.preview')}
         @closed=${() => (this._previewOpen = false)}
       >
         ${picture ? html`<img class="preview-large" src=${picture} alt=${localize('card.preview')} />` : nothing}
+        ${showFile ? html`<div class="preview-file">${filename.state}</div>` : nothing}
         <ha-dialog-footer slot="footer">
           <ha-button slot="primaryAction" @click=${() => (this._previewOpen = false)}>${localize('card.back')}</ha-button>
         </ha-dialog-footer>
