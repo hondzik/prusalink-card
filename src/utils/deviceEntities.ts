@@ -1,4 +1,4 @@
-import type { HomeAssistant } from '../types/HomeAssistant';
+import type { HomeAssistant } from 'custom-card-helpers';
 
 export const PRUSALINK_PLATFORM = 'prusalink';
 

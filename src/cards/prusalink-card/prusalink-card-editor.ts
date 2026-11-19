@@ -1,10 +1,11 @@
+import { fireEvent } from 'custom-card-helpers';
 import { css, html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import setupCustomlocalize from '../../localize';
 import { buildSwitchOffAutomation, createdHelperEntityId, switchOffAutomationId } from '../../utils/automation';
 import { getDeviceEntityIds, getSecondaryCandidates, PRUSALINK_PLATFORM } from '../../utils/deviceEntities';
 import { resolvePrinterEntities } from '../../utils/printerEntities';
-import type { HomeAssistant } from '../../types/HomeAssistant';
+import type { HomeAssistant, LovelaceCardEditor } from 'custom-card-helpers';
 import type { CSSResultGroup, TemplateResult } from 'lit';
 
 const CARD_TYPE = 'custom:prusalink-card';
@@ -18,7 +19,7 @@ interface FormSchema {
 }
 
 @customElement('prusalink-card-editor')
-export class PrusaLinkCardEditor extends LitElement {
+export class PrusaLinkCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false })
   public hass?: HomeAssistant;
 
@@ -142,6 +143,6 @@ export class PrusaLinkCardEditor extends LitElement {
 
   private _setConfig(config: PrusaLinkCardConfig): void {
     this._config = config;
-    this.dispatchEvent(new CustomEvent('config-changed', { detail: { config }, bubbles: true, composed: true }));
+    fireEvent(this, 'config-changed', { config });
   }
 }

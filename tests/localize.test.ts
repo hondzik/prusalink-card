@@ -17,6 +17,7 @@ import sk from '../src/translations/sk.json';
 import sv from '../src/translations/sv.json';
 import uk from '../src/translations/uk.json';
 import zh from '../src/translations/zh.json';
+import type { HomeAssistant } from 'custom-card-helpers';
 
 const languages: Record<string, unknown> = { cs, de, en, es, fr, he, hu, it: it_, ja, nl, no, pl, pt, sk, sv, uk, zh };
 
@@ -37,13 +38,17 @@ describe('translations', () => {
   }
 });
 
+function hassWithLanguage(language: string): HomeAssistant {
+  return { locale: { language } } as unknown as HomeAssistant;
+}
+
 describe('localize', () => {
   it('uses the language of hass', () => {
-    expect(setupCustomlocalize({ locale: { language: 'cs' } })('card.pause')).toBe('Pozastavit');
+    expect(setupCustomlocalize(hassWithLanguage('cs'))('card.pause')).toBe('Pozastavit');
   });
 
   it('falls back to en for an unsupported language and to the key for an unknown key', () => {
-    expect(setupCustomlocalize({ locale: { language: 'xx' } })('card.pause')).toBe('Pause');
+    expect(setupCustomlocalize(hassWithLanguage('xx'))('card.pause')).toBe('Pause');
     expect(setupCustomlocalize()('card.pause')).toBe('Pause');
     expect(setupCustomlocalize()('card.nope')).toBe('card.nope');
   });

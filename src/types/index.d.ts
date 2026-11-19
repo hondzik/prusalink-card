@@ -1,4 +1,4 @@
-import type { HomeAssistant } from './HomeAssistant';
+import type { HomeAssistant, LovelaceCardConfig } from 'custom-card-helpers';
 
 export {};
 
@@ -18,8 +18,7 @@ declare global {
 
   type PrusaLinkProgressText = 'percent_done' | 'percent_remaining' | 'time_remaining' | 'finish_time';
 
-  interface PrusaLinkCardConfig {
-    type: string;
+  interface PrusaLinkCardConfig extends LovelaceCardConfig {
     // any entity of the PrusaLink printer device
     entity: string;
     // optional remotely switched socket (switch.*) powering the printer

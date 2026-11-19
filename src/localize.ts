@@ -15,7 +15,7 @@ import * as sk from './translations/sk.json';
 import * as sv from './translations/sv.json';
 import * as uk from './translations/uk.json';
 import * as zh from './translations/zh.json';
-import type { HomeAssistant } from './types/HomeAssistant';
+import type { HomeAssistant } from 'custom-card-helpers';
 
 const languages: Record<string, unknown> = { cs, de, en, es, fr, he, hu, it, ja, nl, no, pl, pt, sk, sv, uk, zh };
 

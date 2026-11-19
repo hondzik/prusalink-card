@@ -18,8 +18,8 @@ import {
 } from '../../utils/printerDisplay';
 import { resolvePrinterEntities } from '../../utils/printerEntities';
 import { PrusaLinkCardStyles } from './prusalink-card-styles';
-import type { HomeAssistant } from '../../types/HomeAssistant';
 import type { PrinterEntities } from '../../utils/printerEntities';
+import type { HomeAssistant, LovelaceCard } from 'custom-card-helpers';
 import type { HassEntity } from 'home-assistant-js-websocket';
 import type { CSSResultGroup, PropertyValues, TemplateResult } from 'lit';
 import './prusalink-card-editor';
@@ -30,7 +30,7 @@ const TICK_MS = 30 * 1000;
 type Confirm = 'power_off' | 'cancel_print' | 'printer_busy';
 
 @customElement(CARD_TAG)
-export class PrusaLinkCard extends LitElement {
+export class PrusaLinkCard extends LitElement implements LovelaceCard {
   @property({ attribute: false })
   public hass?: HomeAssistant;
 

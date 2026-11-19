@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { getDeviceEntityIds, getSecondaryCandidates, isPrusaLinkEntity } from '../src/utils/deviceEntities';
-import type { HomeAssistant } from '../src/types/HomeAssistant';
+import type { HomeAssistant } from 'custom-card-helpers';
 
 const hass = {
   entities: {
